@@ -22,6 +22,10 @@ module.exports = {
             url: process.env.GOERLI_RPC_URL,
             accounts: [process.env.PRIVATE_KEY],
         },
+        localhost: {
+            chainId: 31337,
+            blockConfirmations: 1,
+        },
     },
     gasReporter: {
         enabled: true,
@@ -36,6 +40,25 @@ module.exports = {
         },
         player: {
             default: 1,
+        },
+    },
+    solidity: {
+        compilers: [
+            {
+                version: "0.8.9",
+            },
+            {
+                version: "0.4.24",
+            },
+        ],
+    },
+    mocha: {
+        timeout: 500000,
+    },
+    etherscan: {
+        // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
+        apiKey: {
+            goerli: process.env.ETHERSCAN_API_KEY,
         },
     },
 }
